@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./public/iconfont/iconfont.css">
+    <style>
+        .icondianying{
+            font-size: 100px;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            var I = document.getElementsByTagName('i');
+            // alert(I[0]);
+            I[0].onmousemove = debounce(doSomeThing, 300);
+            function debounce(func,wait){
+                let timeout;
+                var num2 = 10;
+                return function(){
+                    // clearTimeout(timeout);
+                    // timeout = setTimeout(func,wait)
+                    alert(num2);
+                }
+            }
+            let count = 0;
+            function doSomeThing(){
+                console.log(count++);
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+    </script>
+</head>
+<body>
+    <i class="iconfont icondianying"></i>
+</body>
+<script>
+    var Body = document.getElementsByTagName('body')
+    Body[0].onmousemove = aaa(20);
+    function aaa(num1){
+        var num2 = 10;
+        return function bbb(){
+            alert(num1 + ',' + num2);
+        }
+    }
+    aaa(20);
+    // var res = aaa(20);
+    // alert(res);
+    // res()
+</script>
+</html>
