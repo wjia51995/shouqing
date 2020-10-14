@@ -36,6 +36,7 @@
         border-bottom: solid 1px  #EDEDED;
         ul{
             display: flex;
+            background-color: white;
             li{
                 flex: 1;
                 text-align: center;

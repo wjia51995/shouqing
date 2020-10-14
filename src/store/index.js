@@ -9,7 +9,8 @@ export default new Vuex.Store({
   state: {
     // 自定义的共享状态
     isTabbarShow: true,
-    comingList: []
+    comingList: [],
+    nowplayingList: []
   },
   mutations: { // 唯一修改状态的位置
     HideMaizuoTabbar (state, data) {
@@ -20,6 +21,9 @@ export default new Vuex.Store({
     },
     comingListMutation (state, data) {
       state.comingList = data
+    },
+    nowplayingMutation (state, data) {
+      state.nowplayingList = data
     }
   },
   actions: {
@@ -32,7 +36,7 @@ export default new Vuex.Store({
           'X-Host': 'mall.film-ticket.film.list'
         }
       }).then(res => {
-        console.log(res.data)
+        // console.log(res.data)
         store.commit('comingListMutation', res.data.data.films)
       })
     }

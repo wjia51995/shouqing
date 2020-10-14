@@ -11,7 +11,7 @@
           <div class="city_hot">
             <p>热门城市</p>
             <ul>
-              <li v-for="i in hotList" :key="i.cityId" @touchstart="hanleToCity(i.name, i.cityId)">
+              <li v-for="i in hotList" :key="i.cityId" @click="hanleToCity(i.name, i.cityId)">
                 {{i.name}}
               </li>
             </ul>
@@ -81,7 +81,7 @@ export default {
           return 0
         }
       })
-      console.log(cities)
+      // console.log(cities)
       this.citiesList = cities
       // 设置localStorage
       window.localStorage.setItem('citiesList', JSON.stringify(this.citiesList))

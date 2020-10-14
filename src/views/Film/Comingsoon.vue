@@ -3,13 +3,15 @@
         <ul>
             <li  v-for="data in $store.state.comingList" :key="data.filmId" @click="handleChangePage(data.filmId)">
                 <img :src="data.poster" alt="">
+                <div class="book">预购</div>
                 <h3>
                   {{data.name}}
                   <span class="type">{{data.item.name}}</span>
                 </h3>
                 <p class="actors" v-if="data.actors">主演：{{data.actors | actorfilter}}</p>
                 <p v-else>暂无主演</p>
-                <p>上映日期：{{ data.premiereAt | timefilter | cmstime }}</p>
+                <p>上映日期：{{ data.premiereAt | timefilter | cmstime }}
+                </p>
             </li>
             <li style="height: 50px"></li>
         </ul>
@@ -54,9 +56,10 @@ export default {
     if (this.$store.state.comingList.length === 0) {
       // ajax请求
       this.$store.dispatch('getComingListAction', { cityId: cityId })
-    } else {
-      console.log('使用缓存数据')
     }
+    // else {
+    //   console.log('使用缓存数据')
+    // }
     console.log()
   }
 //   methods: {
@@ -104,6 +107,17 @@ export default {
       }
       .actors{
         margin-top: 20px;
+      }
+      .book{
+        height: 25px;
+        line-height: 25px;
+        width: 50px;
+        color: #ffb232;
+        font-size: 13px;
+        text-align: center;
+        border: solid 1px #ffb232;
+        border-radius: 2px;
+        float: right; margin-right: 10px; margin-top: 41px
       }
     }
   }

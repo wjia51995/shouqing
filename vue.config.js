@@ -1,4 +1,5 @@
 module.exports = {
+  publicPath: '/shouqing',
   devServer: {
     proxy: {
       '/api2': {

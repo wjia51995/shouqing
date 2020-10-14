@@ -1,8 +1,9 @@
 <template>
     <div>
         <ul>
-            <li v-for="data in dataList" :key="data.filmId" @click="handleChangePage(data.filmId)">
+            <li v-for="data in $store.state.nowplayingList" :key="data.filmId" @click="handleChangePage(data.filmId)">
                 <img :src="data.poster" alt="">
+                <div class="buy">购票</div>
                 <h3>
                   {{data.name}}
                   <span class="type">{{data.item.name}}</span>
@@ -40,16 +41,19 @@ export default {
   },
   mounted () {
     var cityId = this.$store.state.city.id
-    axios({
-      url: 'https://m.maizuo.com/gateway?cityId=' + cityId + '&pageNum=1&pageSize=40&type=1&k=4333510',
-      headers: {
-        'X-Client-Info': '{"a":"3000","ch":"1002","v":"5.0.4","e":"1598062479827670262710273","bc":"440100"}',
-        'X-Host': 'mall.film-ticket.film.list'
-      }
-    }).then(res => {
-      console.log(res.data)
-      this.dataList = res.data.data.films
-    })
+    if (this.$store.state.nowplayingList.length === 0) {
+      axios({
+        url: 'https://m.maizuo.com/gateway?cityId=' + cityId + '&pageNum=1&pageSize=40&type=1&k=4333510',
+        headers: {
+          'X-Client-Info': '{"a":"3000","ch":"1002","v":"5.0.4","e":"1598062479827670262710273","bc":"440100"}',
+          'X-Host': 'mall.film-ticket.film.list'
+        }
+      }).then(res => {
+        // console.log(res.data)
+        this.dataList = res.data.data.films
+        this.$store.commit('nowplayingMutation', res.data.data.films)
+      })
+    }
   },
   methods: {
     handleChangePage (id) {
@@ -110,6 +114,17 @@ export default {
       .runtime{
         display: inline;
         margin-left: 10px;
+      }
+      .buy{
+        height: 25px;
+        line-height: 25px;
+        width: 50px;
+        color: #ff5f16;
+        font-size: 13px;
+        text-align: center;
+        border: solid 1px #ff5f16;
+        border-radius: 2px;
+        float: right; margin-right: 10px; margin-top: 41px
       }
     }
   }
