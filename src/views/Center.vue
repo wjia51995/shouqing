@@ -25,7 +25,7 @@ export default {
   beforeRouteEnter (to, from, next) {
     axios.get('/api2/users/getUser').then((res) => {
       var status = res.data.status
-      console.log(res)
+      // console.log(res)
       if (status === 0) {
         next(vm => {
           vm.$store.commit('user/USER_NAME', { name: res.data.data.username })

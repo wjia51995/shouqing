@@ -29,7 +29,6 @@ export default {
   },
   methods: {
     handleToLogin () {
-      console.log('touch')
       axios({
         method: 'post',
         url: '/api2/users/login',

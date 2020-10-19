@@ -54,10 +54,10 @@ const routes = [
     path: '/center',
     component: Center,
     children: [
-      {
-        path: '/mine',
-        redirect: 'center'
-      }
+      // {
+      //   path: '/mine',
+      //   redirect: 'center'
+      // }
     ]
   },
   {
