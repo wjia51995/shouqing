@@ -17,8 +17,7 @@ export default {
     /* eslint-disable no-new */
     new Swiper('.date-container', {
       slidesPerView: 4,
-      spaceBetween: 20,
-      slideToClickedSlide: true
+      spaceBetween: 20
     })
   }
 }
