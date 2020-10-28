@@ -25,7 +25,7 @@
         </div>
       </div>
     </swiper>
-    <div class="film-info" v-for="(item, index) in filmsInfo" :key="index" @click="turnTodetail(item.filmId)">
+    <div class="film-info" v-for="(item, index) in filmsInfo" :key="index">
       <div class="film-head" v-if="index===$store.state.cinemadetailswiper.index">
         <span class="film-name">{{item.name}}</span>
         <span class="film-grade">{{item.grade}}</span>
@@ -70,9 +70,6 @@ export default {
         str = str.slice(0, 28) + '...'
       }
       return str
-    },
-    turnTodetail (id) {
-      this.$router.push(`/detail/${id}`)
     }
   },
   components: {
