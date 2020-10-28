@@ -5,6 +5,8 @@ import Nowplaying from '@/views/Film/Nowplaying'
 import Comingsoon from '@/views/Film/Comingsoon'
 import Cinema from '@/views/Cinema'
 import Clist from '@/views/Cinema/Clist'
+import Cinemadetail from '@/views/Cinema/Cinemadetail'
+// import CinemadetailList from '@/views/Cinema/Cinemadetail/CinemadetailList'
 import Detail from '@/views/Detail'
 import Center from '@/views/Center'
 import Register from '@/components/Register'
@@ -34,16 +36,15 @@ const routes = [
   {
     path: '/cinema',
     component: Cinema
-    // children: [
-    //   {
-    //     path: '/cinema/clist',
-    //     component: Clist
-    //   }
-    // ]
   },
   {
     path: '/cinema/clist',
     component: Clist
+  },
+  {
+    path: '/cinemadetail/:id',
+    component: Cinemadetail,
+    props: true
   },
   {
     path: '/detail/:id', //  /detail/aa 动态路由
@@ -52,13 +53,7 @@ const routes = [
   },
   {
     path: '/center',
-    component: Center,
-    children: [
-      // {
-      //   path: '/mine',
-      //   redirect: 'center'
-      // }
-    ]
+    component: Center
   },
   {
     path: '/register',

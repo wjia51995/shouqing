@@ -1,15 +1,11 @@
 <template>
     <div>
-        <!-- <swiper>
-            <div class="swiper-slide" v-for="n in 10" :key="n">{{n}}</div>
-        </swiper> -->
         <filmHeader :class="isFixed?'fixed':''" :isFixed="isFixed"></filmHeader>
         <router-view></router-view>
     </div>
 </template>
 
 <script>
-// import swiper from '@/views/Film/Swiper'
 import filmHeader from '@/views/Film/FilmHeader'
 export default {
   data () {
@@ -19,7 +15,7 @@ export default {
   },
   methods: {
     handleScroll () {
-      if (document.documentElement.scrollTop >= 40) {
+      if ((document.documentElement.scrollTop || document.body.scrollTop || window.pageYOffset) >= 40) {
         this.isFixed = true
       } else {
         this.isFixed = false

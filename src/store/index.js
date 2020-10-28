@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 import axios from 'axios'
 import city from './city'
 import user from './user'
+import cinemadetailswiper from './cinemadetailswiper'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -30,7 +31,7 @@ export default new Vuex.Store({
     // 异步处理
     getComingListAction (store, { object }) {
       axios({
-        url: 'https://m.maizuo.com/gateway?cityId=110100&pageNum=1&pageSize=40&type=2&k=6367644',
+        url: 'https://m.maizuo.com/gateway?cityId=' + store.state.city.id + '&pageNum=1&pageSize=40&type=2&k=6367644',
         headers: {
           'X-Client-Info': '{"a":"3000","ch":"1002","v":"5.0.4","e":"1598062479827670262710273"}',
           'X-Host': 'mall.film-ticket.film.list'
@@ -43,6 +44,7 @@ export default new Vuex.Store({
   },
   modules: {
     city,
-    user
+    user,
+    cinemadetailswiper
   }
 })

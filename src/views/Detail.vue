@@ -28,7 +28,7 @@
         <div class="swiper" style="background-color: white">
           <!-- 此处myclassname将属性传给DetailSwiper以识别两个swiper组件 -->
           <swiper perview="4" class="actorswiper" myclassname="actorswiper">
-            <div class="swiper-slide" v-for="data in filminfo.actors" :key="data.name">
+            <div class="swiper-slide" v-for="(data,index) in filminfo.actors" :key="index">
               <img :src="data.avatarAddress" alt="">
               <p>{{data.name}}</p>
             </div>
@@ -74,7 +74,8 @@ export default {
   },
   methods: {
     goBack () {
-      window.history.back()
+      this.$router.back()
+      // window.history.back()
     }
   },
   props: ['id'],

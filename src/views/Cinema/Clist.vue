@@ -15,7 +15,7 @@
 
         <div class="cinema_body">
             <ul>
-                <li v-for="item in cinemaInfo" :key="item.cinemaId">
+                <li v-for="item in cinemaInfo" :key="item.cinemaId" @click="turnToCinemaDetail(item.cinemaId)">
                     {{item.name}}
                     <span class="price">￥{{item.lowPrice/100}}起</span>
                 </li>
@@ -33,6 +33,11 @@ export default {
       cinemaInfo: []
     }
   },
+  methods: {
+    turnToCinemaDetail (id) {
+      this.$router.push(`/cinemadetail/${id}`)
+    }
+  },
   mounted () {
     var cityId = this.$store.state.city.id
     axios({
@@ -42,7 +47,6 @@ export default {
         'X-Host': 'mall.film-ticket.cinema.list'
       }
     }).then(res => {
-    //   console.log(res.data)
       this.cinemaInfo = res.data.data.cinemas
     })
   }
